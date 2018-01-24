@@ -10,12 +10,17 @@ def a_play(context):
     context.play = Play()
 
 
-@when(u'one of three doors is chosen')
+@when(u'a car is placed behind one of three doors')
 def door_is_chosen(context):
     context.rng = mock(return_value=0)
-    context.play.choose_door(rng=context.rng)
+    context.play.place_car(rng=context.rng)
 
 
-@then(u'this door is randomly chosen using a CSRNG')
-def door_is_chosen_securely(context):
-    context.rng.assert_called_with(3)
+@when(u'a player picks a door')
+def player_picks_a_door(context):
+    context.rng = mock(return_value=0)
+    context.play.pick(rng=context.rng)
+
+@then(u'this door is randomly chosen out of {number_of_doors:d} using a CSRNG')
+def door_is_chosen_securely(context, number_of_doors):
+    context.rng.assert_called_with(number_of_doors)

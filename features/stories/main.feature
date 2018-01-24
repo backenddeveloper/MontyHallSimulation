@@ -5,5 +5,21 @@ Feature: A simulation of the Monty Hall problem
 
 Scenario: It chooses A cryptographically secure random number
     Given a play
-    When one of three doors is chosen
-    Then this door is randomly chosen using a CSRNG
+    When a car is placed behind one of three doors
+    Then this door is randomly chosen out of 3 using a CSRNG
+
+Scenario: When a first door is chosen it is chosen randomly
+    Given a play
+    When a player picks a door
+    Then this door is randomly chosen out of 3 using a CSRNG
+
+Scenario Outline: When a first door is chosen it is removed from the pool
+    Given a play
+    When a player picks door number <door>
+    Then this door is randomly chosen out of 3 using a CSRNG
+
+    Examples: Door numbers to test
+    | door |
+    | 0    |
+    | 1    |
+    | 2    |
