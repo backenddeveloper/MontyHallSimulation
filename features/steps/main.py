@@ -31,6 +31,7 @@ def play_picks_a_particular_door(context, door):
 def door_is_chosen_securely(context, number_of_doors):
     context.rng.assert_called_with(number_of_doors)
 
+
 @then(u'door {door:d} is removed from the available doors')
 def door_is_removed(context, door):
     assert door not in context.play.available_doors
