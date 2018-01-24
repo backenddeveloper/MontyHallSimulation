@@ -10,13 +10,13 @@ Scenario: It chooses A cryptographically secure random number
 
 Scenario: When a first door is chosen it is chosen randomly
     Given a play
-    When a player picks a door
+    When a player picks a random door
     Then this door is randomly chosen out of 3 using a CSRNG
 
 Scenario Outline: When a first door is chosen it is removed from the pool
     Given a play
     When a player picks door number <door>
-    Then this door is randomly chosen out of 3 using a CSRNG
+    Then door <door> is removed from the available doors
 
     Examples: Door numbers to test
     | door |
