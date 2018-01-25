@@ -11,8 +11,11 @@ class Play:
     def place_car(self, rng=SystemRandom.randrange):
         self.winning_door = rng(3)
 
+    def pick(self, door):
+        self.chosen_door = door
+
     def pick_random(self, rng=SystemRandom.randrange):
         self.pick(rng(3))
 
-    def pick(self, door):
+    def reveal(self, door):
         self.available_doors.remove(door)
