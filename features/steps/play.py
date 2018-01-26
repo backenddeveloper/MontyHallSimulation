@@ -33,6 +33,11 @@ def car_is_placed_behind_door(context, door):
     context.play.pick_random(rng=context.rng)
 
 
+@when(u'a non winning door is revealed')
+def non_winning_door_is_revealed(context):
+    raise NotImplementedError
+
+
 @then(u'this door is randomly chosen out of {number_of_doors:d} using a CSRNG')
 def door_is_chosen_securely(context, number_of_doors):
     context.rng.assert_called_with(number_of_doors)

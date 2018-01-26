@@ -3,7 +3,7 @@ Feature: A simulation of the Monty Hall problem
     And returns statistics on the outcome
     In order to settle a bet with a cute but wrong young lady
 
-Scenario: It chooses A cryptographically secure random number
+Scenario: It chooses cryptographically secure random numbers
     Given a play
     When a car is placed behind one of three doors
     Then this door is randomly chosen out of 3 using a CSRNG
@@ -41,3 +41,13 @@ Scenario Outline: Another door will be opened
     | 2            | 0           | 1                |
     | 2            | 1           | 0                |
     | 2            | 2           | 0                |
+
+
+Scenario: the player chooses a random door from the remainder
+    Given a play
+    When a car is placed behind one of three doors
+    And a player picks a random door
+    And a non winning door is revealed
+    And a player picks another door
+    Then this door is randomly chosen out of 2 using a CSRNG
+    And the winning state is returned
